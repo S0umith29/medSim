@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+.env
+
+# macOS
+.DS_Store
+
+# Streamlit/Cache
+.streamlit/
+
+# Project artifacts
+data/chroma/        # ChromaDB index

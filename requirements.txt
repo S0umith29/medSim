@@ -1,0 +1,8 @@
+streamlit>=1.37
+chromadb>=0.5.5
+sentence-transformers>=2.7.0
+datasets>=2.18.0
+numpy>=1.26
+python-dotenv>=1.0.1
+requests>=2.31.0
+tqdm>=4.66
