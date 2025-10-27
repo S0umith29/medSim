@@ -1,8 +1,8 @@
-# MedSimuli – Virtual Patient RAG Prototype (Streamlit + Chroma + Ollama)
+# MedSimuli – Virtual Patient RAG Prototype (Streamlit + ChromaDB + Ollama)
 
 ![It Works](assets/It%20Works.png)
 
-A simple proof-of-concept virtual patient simulator for medical students. Uses RAG over the PMC-CaseReport dataset, ChromaDB as a vector store, sentence-transformers embeddings, and Ollama running `llama3.2:3b` for responses. UI built with Streamlit.
+A simple virtual patient simulator for medical students. Uses RAG over the PMC-CaseReport dataset, ChromaDB as a vector store, sentence-transformers embeddings, and Ollama running `llama3.2:3b` for responses. UI built with Streamlit.
 
 Dataset: https://huggingface.co/datasets/chaoyi-wu/PMC-CaseReport
 
@@ -27,7 +27,7 @@ ollama pull llama3.2:3b
 2) Create a virtual environment and install Python dependencies
 
 ```bash
-cd /Users/sandeep/Documents/projects/MedSimuli
+cd MedSimuli
 python -m venv .venv
 source .venv/bin/activate
 pip install -U pip
