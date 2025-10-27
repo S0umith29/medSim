@@ -27,7 +27,7 @@ ollama pull llama3.2:3b
 2) Create a virtual environment and install Python dependencies
 
 ```bash
-cd MedSimuli
+cd medSim
 python -m venv .venv
 source .venv/bin/activate
 pip install -U pip
