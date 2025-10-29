@@ -11,6 +11,8 @@ Dataset: https://huggingface.co/datasets/chaoyi-wu/PMC-CaseReport
 - Sentence-transformers embeddings (`all-MiniLM-L6-v2` by default)
 - Local LLM via Ollama (`llama3.2:3b`)
 - Streamlit chat interface with citations
+- Virtual Patient mode 
+- Ethics/HIPAA policy applied to prompts
 - Simple CLI to build or refresh the index
 
 ## Quickstart
@@ -50,7 +52,12 @@ python scripts/build_index.py --limit 5000
 5) Run the Streamlit app
 
 ```bash
+# Ensure imports resolve
+export PYTHONPATH=$PWD
+
 streamlit run src/app/streamlit_app.py
+# or headless/network:
+# streamlit run src/app/streamlit_app.py --server.headless true --server.address 0.0.0.0 --server.port 8501
 ```
 
 ## Project Structure
@@ -69,14 +76,25 @@ MedSimuli/
       │   ├─ chunker.py         # Text chunking utilities
       │   ├─ indexer.py         # Chroma index builder
       │   ├─ retriever.py       # Chroma retriever
-      │   └─ llm.py             # Ollama LLM wrapper
+      │   ├─ llm.py             # Ollama LLM wrapper
+      │   └─ evaluator.py       # Rubric-based evaluator 
       └─ config.py              # Config and constants
 ```
+
+## Using the app
+- In the sidebar, choose Mode:
+  - Study (RAG QA): ask general questions; answers cite `[PMC_id]` sources
+  - Virtual Patient: click “New patient” to sample a case; ask first‑person history questions
+- The sidebar also shows a read‑only Ethics/HIPAA policy in effect.
 
 ## Notes
 - This is a prototype for demonstration only; not clinical or production-grade.
 - The dataset includes generated QA pairs; we primarily index the case `context` for retrieval. The model is instructed to cite sources as `[PMC_id]`.
 - If you get missing model errors, ensure `ollama serve` is running and the `llama3.2:3b` model is available.
+
+### Security/Ethics
+- Prompts include a concise Ethics/HIPAA policy (minimum‑necessary PHI, respectful language, no third‑party PHI).
+- Evaluation module exists (`src/rag/evaluator.py`).
 
 ## Dataset Citation
 - PMC-CaseReport dataset by Chaoyi Wu et al.: https://huggingface.co/datasets/chaoyi-wu/PMC-CaseReport
