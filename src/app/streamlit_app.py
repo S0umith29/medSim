@@ -2,7 +2,7 @@ import os
 import random
 import streamlit as st
 
-from src.config import DEFAULT_TOP_K
+from src.config import DEFAULT_TOP_K, ETHICS_POLICY
 from src.rag.retriever import ChromaRetriever
 from src.rag.llm import OllamaLLM
 
@@ -59,6 +59,10 @@ with st.sidebar:
     if st.button("Show index path"):
         from src.config import PERSIST_DIR
         st.info(f"Chroma path: {os.path.abspath(PERSIST_DIR)}")
+
+    st.markdown("---")
+    with st.expander("Ethics/HIPAA policy in effect"):
+        st.write(ETHICS_POLICY)
 
 placeholder = "Ask about a case, symptoms, labs, or differential…" if st.session_state.mode == "Study (RAG QA)" else "Ask the patient a question…"
 prompt = st.chat_input(placeholder)

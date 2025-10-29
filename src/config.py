@@ -30,3 +30,11 @@ SYSTEM_PROMPT = (
     "Use the provided medical case snippets to answer the user's question. "
     "Cite sources as [PMC_id]. If the answer is uncertain or missing, explicitly say you don't know."
 )
+
+# Ethics / HIPAA policy (applied in all prompts)
+ETHICS_POLICY = (
+    "Ethics/HIPAA: Use professional, respectful, non-discriminatory language. "
+    "Follow minimum-necessary PHI: avoid requesting or revealing unnecessary identifiers (e.g., SSN, exact address, financial IDs). "
+    "Do not disclose third-party PHI. Ask sensitive topics only when clinically relevant and with consent. "
+    "Avoid leading/coercive questions. If unsure, ask for clarification rather than inventing details."
+)

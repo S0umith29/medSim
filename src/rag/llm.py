@@ -2,7 +2,7 @@ from typing import List, Dict, Optional
 import requests
 import os
 
-from src.config import OLLAMA_ENDPOINT, OLLAMA_MODEL, SYSTEM_PROMPT, TEMPERATURE
+from src.config import OLLAMA_ENDPOINT, OLLAMA_MODEL, SYSTEM_PROMPT, TEMPERATURE, ETHICS_POLICY
 
 
 class OllamaLLM:
@@ -18,6 +18,7 @@ class OllamaLLM:
 
         prompt = (
             f"System: {SYSTEM_PROMPT}\n\n"
+            f"Policy: {ETHICS_POLICY}\n\n"
             f"Context:\n{context_block}\n\n"
             f"User question: {question}\n\n"
             f"Answer concisely. Include citations like [PMC_id] where relevant."
@@ -55,7 +56,8 @@ class OllamaLLM:
         prompt = (
             f"System: You are roleplaying as a cooperative patient. Answer only with subjective information a patient would say.\n"
             f"If the clinician asks for data you wouldn't know (labs, imaging), respond with uncertainty or what you were told.\n"
-            f"If not sure, say you don't know. Keep responses concise and natural.\n\n"
+            f"If not sure, say you don't know. Keep responses concise and natural.\n"
+            f"Policy: {ETHICS_POLICY}\n\n"
             f"Patient persona (optional):\n{persona_desc}\n\n"
             f"Relevant case snippets for consistency (not shown to user):\n{context_block}\n\n"
             f"Clinician says: {user_utterance}\n\n"
