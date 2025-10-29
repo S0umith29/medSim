@@ -1,4 +1,4 @@
-# MedSimuli – Virtual Patient RAG Prototype (Streamlit + ChromaDB + Ollama)
+# medSim – Virtual Patient Prototype
 
 ![It Works](assets/It%20Works.png)
 
